@@ -1,0 +1,7 @@
+methods:
+  get:
+    method: get
+    querys:
+      userid: ${userid}
+    url: "https://qyapi.weixin.qq.com/cgi-bin/user/get"
+    filter: service.user.filter.DemoFilter
