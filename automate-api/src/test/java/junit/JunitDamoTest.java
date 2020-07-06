@@ -49,7 +49,7 @@ public class JunitDamoTest {
         assertThat(user.name, equalTo("张三"));
     }
 
-    @Tag("C")
+    @Tag("D")
     @DisplayName("参数接口")
     @ParameterizedTest
     @MethodSource("stringProvider")
