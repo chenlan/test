@@ -5,6 +5,8 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import service.BaseApi;
 import service.SecretToken;
 
@@ -13,9 +15,10 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 
+public class UserPo extends BaseApi {
 
-public class User extends BaseApi {
-    public User(){
+
+    public UserPo(){
         initializeData();
     }
 

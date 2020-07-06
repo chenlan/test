@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 @RunWith(Parameterized.class)
@@ -33,4 +34,7 @@ public class TestParam {
     public void testDemo() {
         assertThat("demoAssertThat", actual, equalTo(expect));
     }
+
+
+
 }

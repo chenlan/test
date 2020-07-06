@@ -1,7 +1,9 @@
 package junit;
 
 import common.DataFileManager;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import service.ApiObjectModel;
 
@@ -23,6 +25,11 @@ public class AlluerTest {
                 //item.setValue(params.get(mc.group()));
             }
 
+    }
+
+    @BeforeEach
+    public void beforeEach(TestInfo context){
+        System.out.println("beforEach");
     }
 
     @Test

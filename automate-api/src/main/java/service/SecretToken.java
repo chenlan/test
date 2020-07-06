@@ -11,7 +11,7 @@ public class SecretToken {
         if(secretToken == null){
             secretToken = new SecretToken();
         }
-        return  secretToken;
+        return secretToken;
     }
 
 

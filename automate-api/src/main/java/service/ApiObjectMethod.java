@@ -15,6 +15,8 @@ public class ApiObjectMethod {
     public HashMap<String,Object> querys;
     public HashMap<String,Object> headers;
     public HashMap<String,Object> postBody;
+    public String name;
+    public String description;
     public String postBodyRaw;
     public String method = "get";
     public String url = "";
@@ -49,16 +51,13 @@ public class ApiObjectMethod {
         requestSpecification.queryParam("access_token",
                 SecretToken.getInstance().getWorkToken());
         if(querys!=null){
-            replaceMap(querys);
-            requestSpecification.queryParams(querys);
+            requestSpecification.queryParams(replaceMap(querys));
         }
         if(headers!=null){
-            replaceMap(headers);
-            requestSpecification.headers(headers);
+            requestSpecification.headers(replaceMap(headers));
         }
         if(postBody!=null){
-            replaceMap(postBody);
-            requestSpecification.body(postBody);
+            requestSpecification.body(replaceMap(postBody));
         }
         if(postBodyRaw!=null){
             requestSpecification.body(postBodyRaw);
@@ -69,10 +68,12 @@ public class ApiObjectMethod {
                 .then().log().all().extract().response();
     }
 
-    private void replaceMap(HashMap<String,Object> map){
+    private HashMap<String,Object> replaceMap(HashMap<String,Object> map){
+        HashMap<String,Object> replaceNewMap = new HashMap<>();
         for (Map.Entry<String,Object> item : map.entrySet()){
-            item.setValue(replaceString(item.getValue().toString()));
+            replaceNewMap.put(item.getKey(),replaceString(item.getValue().toString()));
         }
+        return replaceNewMap;
     }
 
     private String replaceString(String valueRaw){
