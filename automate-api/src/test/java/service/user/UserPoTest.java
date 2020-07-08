@@ -7,8 +7,12 @@ import io.qameta.allure.Story;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 @Epic("通讯录管理")
@@ -21,6 +25,7 @@ public class UserPoTest {
         userPo = new UserPo();
     }
 
+    @Tag("fast")
     @Story("读取成员")
     @DisplayName("读取成员")
     @ParameterizedTest(name = "{index} {0}")
@@ -32,7 +37,11 @@ public class UserPoTest {
                 .body( "errcode", Matchers.equalTo(errcode));
     }
 
-
-
+    @Test
+    @Tag("slow")
+    @DisplayName("读取成员")
+    public void postUser(){
+        assertThat("1",Matchers.equalTo("1"));
+    }
 
 }

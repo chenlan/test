@@ -4,5 +4,3 @@ methods:
       querys:
         userid: ${userid}
       url: "https://qyapi.weixin.qq.com/cgi-bin/user/get"
-
-

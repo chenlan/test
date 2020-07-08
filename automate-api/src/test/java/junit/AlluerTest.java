@@ -36,7 +36,7 @@ public class AlluerTest {
 
 //    @Test
 //    public void ddd(){
-//        ApiObjectModel model = DataFileManager.readValue("/service/user/api/User", ApiObjectModel.class);
+//        ApiObjectModel model = DataFileManager.readValue("/service/user/api/UserPo", ApiObjectModel.class);
 //        ApiObjectModel d = model;
 //    }
 

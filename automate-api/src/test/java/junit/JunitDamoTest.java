@@ -36,7 +36,7 @@ public class JunitDamoTest {
 //        System.out.println("test11");
 //       // errorCollector.checkThat(1, equalTo(1));
 //        assertThat(5.0, equalTo(5.0));
-//       User user = new User();
+//       UserPo user = new UserPo();
 //        user.name = "张三";
 //        user.password = "dddddd";
 //        login(user);
