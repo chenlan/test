@@ -102,12 +102,13 @@ public class JunitDamoTest {
         );
     }
 
-
+    @Tag("B")
     @Severity(SeverityLevel.MINOR)
     @Flaky
     @Test
     public void test4() {
         System.out.println("test4");
+        assertEquals(4,5);
     }
 
 
@@ -118,6 +119,11 @@ public class JunitDamoTest {
         System.out.println("test2");
         assertThat(5.0, anyOf(closeTo(4.9, 0.2),
                 equalTo(60)));
+    }
+
+    @Test
+    public void test3(){
+        assertEquals(1,1);
     }
 
 

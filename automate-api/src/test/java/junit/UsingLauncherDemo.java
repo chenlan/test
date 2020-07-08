@@ -19,10 +19,15 @@ import exce.RunTestListen;
 import org.junit.jupiter.api.Tag;
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
 import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
+
+import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 // end::imports[]
 
 /**
@@ -85,28 +90,29 @@ public class UsingLauncherDemo {
         // @formatter:on
     }
 
-//    @org.junit.jupiter.api.Test
-//    void launcherConfig() {
-//        Path reportsDir = Paths.get("target", "xml-reports");
-//        PrintWriter out = new PrintWriter(System.out);
-//        // @formatter:off
-//        // tag::launcherConfig[]
-//        LauncherConfig launcherConfig = LauncherConfig.builder()
-//                .enableTestEngineAutoRegistration(false)
-//                .enableTestExecutionListenerAutoRegistration(false)
-//               // .addTestEngines(new CustomTestEngine())
-//              //  .addTestExecutionListeners(new LegacyXmlReportGeneratingListener(reportsDir, out))
-//                .addTestExecutionListeners(new CustomTestExecutionListener())
-//                .build();
-//
-//        Launcher launcher = LauncherFactory.create(launcherConfig);
-//
-//        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
-//                .selectors(selectPackage("junit"))
-//                .build();
-//
-//        launcher.execute(request);
-//    }
-//
+    @org.junit.jupiter.api.Test
+    void launcherConfig() {
+        Path reportsDir = Paths.get("target", "xml-reports");
+        PrintWriter out = new PrintWriter(System.out);
+        // @formatter:off
+        // tag::launcherConfig[]
+        LauncherConfig launcherConfig = LauncherConfig.builder()
+                .enableTestEngineAutoRegistration(false)
+                .enableTestExecutionListenerAutoRegistration(false)
+               // .addTestEngines(new CustomTestEngine())
+              //  .addTestExecutionListeners(new LegacyXmlReportGeneratingListener(reportsDir, out))
+                .addTestExecutionListeners(new RunTestListen())
+                .build();
+
+        Launcher launcher = LauncherFactory.create(launcherConfig);
+
+        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
+                .selectors(selectPackage("junit"))
+
+                .build();
+
+        launcher.execute(request);
+    }
+
 }
 

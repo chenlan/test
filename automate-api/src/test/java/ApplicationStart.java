@@ -1,14 +1,17 @@
 import exce.RunTestListen;
+import junit.JunitDamoTest;
+import junit.MyTestSuit;
 import org.junit.platform.launcher.*;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
 import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
-import org.junit.platform.reporting.legacy.xml.LegacyXmlReportGeneratingListener;
 
 import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNamePatterns;
 import static org.junit.platform.engine.discovery.DiscoverySelectors.*;
@@ -22,23 +25,23 @@ public class ApplicationStart {
         Path  d = Paths.get(classesDir.toURI());
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
                 .selectors(
-                        selectPackage("junit")
+                       // selectPackage("junit")
                         //selectClasspathRoots(Collections.singleton(Paths.get(classesDir.toURI())))
-                        //selectClass(Mytest.class)
-
-//                        selectClasspathRoots(new HashSet<>(Arrays.asList(
-//                                Paths.get("target/test-classes")
-//                                //,
+  //                      selectClass(JunitDamoTest.class)
+                        selectClasspathRoots(new HashSet<>(Arrays.asList(
+                                Paths.get("target/test-classes/junit/")
+                               //,
 //                                //Paths.get("src/main/resources/Calculator-1.0-SNAPSHOT-tests")
-//                        )))
+                               )))
 
                 )
                .filters(
+
 //                        includeEngines("junit-jupiter", "spek"),
 //                        // excludeEngines("junit-vintage"),
-                includeTags("siutA"),
-                excludeTags("c"),
-                includeClassNamePatterns(".*Test")
+                includeTags("A"),
+                excludeTags("B")
+               // includeClassNamePatterns(".*Test")
                 // includeClassNamePatterns("org\.example\.tests.*")
         )
                 // .configurationParameter("key1", "value1")
@@ -51,16 +54,16 @@ public class ApplicationStart {
             Launcher launcher = LauncherFactory.create();
             TestPlan plan = launcher.discover(request);
 
+
         Path reportsDir = Paths.get("target", "xml-reports");
         PrintWriter out = new PrintWriter(System.out);
 
             // Executing tests
         TestExecutionListener listener = new SummaryGeneratingListener();
-        TestExecutionListener le =  new LegacyXmlReportGeneratingListener(reportsDir, out);
+//        TestExecutionListener le =  new LegacyXmlReportGeneratingListener(reportsDir, out);
         RunTestListen list = new RunTestListen();
-            launcher.registerTestExecutionListeners(listener,le,list);
-
-            launcher.execute(request,listener,le);
+            launcher.registerTestExecutionListeners(listener,list);
+            launcher.execute(request,listener);
 
 
     }

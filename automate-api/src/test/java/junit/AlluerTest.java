@@ -1,17 +1,19 @@
 package junit;
 
 import common.DataFileManager;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import service.ApiObjectModel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.condition.OS.MAC;
-
 public class AlluerTest {
 
 
@@ -32,9 +34,14 @@ public class AlluerTest {
         System.out.println("beforEach");
     }
 
+//    @Test
+//    public void ddd(){
+//        ApiObjectModel model = DataFileManager.readValue("/service/user/api/User", ApiObjectModel.class);
+//        ApiObjectModel d = model;
+//    }
+
     @Test
-    public void ddd(){
-        ApiObjectModel model = DataFileManager.readValue("/service/user/api/User", ApiObjectModel.class);
-        ApiObjectModel d = model;
+    public void demoTest2(){
+        Assert.assertEquals(1,1);
     }
 }
