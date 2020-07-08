@@ -88,7 +88,7 @@ public class JunitDamoTest {
     @ParameterizedTest(name = "{index} {displayName} {0}")
     @MethodSource
     void testWithMultiArgMethodSource(String str, int num, List<String> list) {
-        System.out.println("testWithMultiArgMethodSource");
+        System.out.println("testWithMultiArgMethodSourceBBBBB");
         Allure.description("c:"+str);
         assertEquals(5, str.length());
         assertTrue(num >= 1 && num <= 2);

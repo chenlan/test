@@ -13,6 +13,6 @@ import org.junit.runner.RunWith;
 })
 //@SelectPackages("junit")
 //@IncludeClassNamePatterns({"^.*ATests?$"})
-//@IncludeTags("D")
+@IncludeTags("D")
 public class TestSuitB {
 }

@@ -66,6 +66,10 @@
 
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <version>3.0.0-M3</version>-->
+<!--            </plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -76,12 +80,12 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-<!--                        <include>junit.TestSuitA.java</include>-->
+<!--                    <include>junit.TestSuitA.java</include>-->
                         <include>${runSuite}</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <!--                    <groups>siutA</groups>-->
-                    <!--                    <excludedGroups>siutB</excludedGroups>-->
+<!--                    <groups>A</groups>-->
+<!--                    <excludedGroups>B</excludedGroups>-->
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
